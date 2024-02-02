@@ -25,8 +25,8 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigin = allowedOrigins.find((allowed) =>
-      origin.startsWith(allowed)
+    const allowedOrigin = allowedOrigins.find(
+      (allowed) => origin && origin.startsWith(allowed)
     );
     if (allowedOrigin || !origin) {
       callback(null, true);
