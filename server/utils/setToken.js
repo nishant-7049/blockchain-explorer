@@ -9,6 +9,7 @@ exports.setToken = async (res, user, message) => {
       path: "/",
       sameSite: "None",
       secure: true,
+      httpOnly: true,
     })
     .status(200)
     .json({
