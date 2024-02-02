@@ -15,6 +15,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "https://etherexplorer.netlify.app",
+  "https://*.etherexplorer.netlify.app",
   "https://etherexplorer.netlify.app/login",
   "https://etherexplorer.netlify.app/account",
   "https://etherexplorer.netlify.app/notification",
