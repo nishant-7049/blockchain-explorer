@@ -91,6 +91,7 @@ const Profile = () => {
                 className="border-[#2c3e50] mt-4 border-2 px-4 py-2 bg-[#2c3e50] text-[#ecf0f1] font-semibold hover:text-[#2c3e50] hover:bg-[#ecf0f1]"
               />
               <button
+                type="button"
                 className="border-red-700 mt-4 border-2 px-4 py-2 bg-red-700 text-[#ecf0f1] font-semibold hover:text-red-700 hover:bg-[#ecf0f1]"
                 onClick={() => {
                   dispatch(logoutUser());
