@@ -5,7 +5,7 @@ exports.setToken = async (res, user, message) => {
     expiresIn: "2h",
   });
   res
-    .cookie("token", token, { httpOnly: true, secure: true })
+    .cookie("token", token, { httpOnly: true, secure: true, sameSite: "None" })
     .status(200)
     .json({
       success: true,
