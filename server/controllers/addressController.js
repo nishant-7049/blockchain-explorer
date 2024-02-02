@@ -105,11 +105,11 @@ exports.giveNotifications = catchAsyncError(async (req, res, next) => {
   //     message: notificationPayload.notification.body,
   //   });
 
-    // await webPush.sendNotification(
-    //   notification.notificationSubscription,
-    //   JSON.stringify(notificationPayload)
-    // );
-  });
+  // await webPush.sendNotification(
+  //   notification.notificationSubscription,
+  //   JSON.stringify(notificationPayload)
+  // );
+  // });
   res.status(200).json({
     success: true,
   });
