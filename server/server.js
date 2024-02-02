@@ -16,11 +16,11 @@ app.use(cookieParser());
 const allowedOrigins = [
   "https://etherexplorer.netlify.app",
   "https://etherexplorer.netlify.app/login",
-  "https://etherexplorer.netlify.app/account/:address",
+  "https://etherexplorer.netlify.app/account",
   "https://etherexplorer.netlify.app/notification",
   "https://etherexplorer.netlify.app/register",
   "https://etherexplorer.netlify.app/profile",
-  "https://etherexplorer.netlify.app/notification/:notificationId",
+  "https://etherexplorer.netlify.app/notification",
 ];
 
 const corsOptions = {
