@@ -53,7 +53,7 @@ const startServer = async () => {
   try {
     await connectMoralis();
     // await connectWebPush();
-    await moralisStream();
+    moralisStream();
 
     app.listen(process.env.PORT, () => {
       console.log(`Server is running on port: ${process.env.PORT}`);

@@ -75,8 +75,9 @@ exports.getAllAddressess = catchAsyncError(async (req, res, next) => {
 });
 
 exports.giveNotifications = catchAsyncError(async (req, res, next) => {
-  console.log(req.body.txs[0]);
+  console.log("started");
   const { fromAddress, toAddress, value, gas, hash } = req.body.txs[0];
+  console.log(fromAddress);
 
   const address = await Address.findOne({
     address: { $regex: fromAddress, $options: "i" },
@@ -97,13 +98,13 @@ exports.giveNotifications = catchAsyncError(async (req, res, next) => {
     const notification = await Notification.findOne({ userId: user._id });
     notification.notifications.unshift(notificationPayload.notification);
     await notification.save();
-    console.log("notification saved");
+
     await sendEmail({
       email: user.email,
       subject: notificationPayload.notification.title,
       message: notificationPayload.notification.body,
     });
-    console.log("email sent");
+
     // await webPush.sendNotification(
     //   notification.notificationSubscription,
     //   JSON.stringify(notificationPayload)
