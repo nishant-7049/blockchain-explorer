@@ -14,6 +14,28 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
+const allowedOrigins = [
+  "https://etherexplorer.netlify.app/",
+  "https://etherexplorer.netlify.app/account/:address",
+  "https://etherexplorer.netlify.app/notification",
+  "https://etherexplorer.netlify.app/register",
+  "https://etherexplorer.netlify.app/profile",
+  "https://etherexplorer.netlify.app/notification/:notificationId",
+  "https://etherexplorer.netlify.app/login",
+];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow cookies to be sent in CORS requests
+  })
+);
+
 app.use("/api", require("./routes/userRoute"));
 app.use("/api/ether", require("./routes/etherRoute"));
 app.use("/api/address", require("./routes/addressRoute"));
