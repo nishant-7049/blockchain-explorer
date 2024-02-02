@@ -8,6 +8,7 @@ exports.setToken = async (res, user, message) => {
     .cookie("token", token, {
       path: "/",
       sameSite: "None",
+      domain: ".etherexplorer.netlify.com",
       secure: true,
       httpOnly: true,
     })
