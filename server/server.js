@@ -25,13 +25,16 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
+    const allowedOrigin = allowedOrigins.find((allowed) =>
+      origin.startsWith(allowed)
+    );
+    if (allowedOrigin || !origin) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true, // Allow cookies to be sent in CORS requests
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
