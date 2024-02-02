@@ -76,34 +76,34 @@ exports.getAllAddressess = catchAsyncError(async (req, res, next) => {
 
 exports.giveNotifications = catchAsyncError(async (req, res, next) => {
   console.log("started");
-  const { fromAddress, toAddress, value, gas, hash } = req.body.txs[0];
-  console.log(fromAddress);
+  // const { fromAddress, toAddress, value, gas, hash } = req.body.txs[0];
+  // console.log(fromAddress);
 
-  const address = await Address.findOne({
-    address: { $regex: fromAddress, $options: "i" },
-  });
-  address.users.forEach(async (userId) => {
-    const user = await User.findById(userId);
-    const notificationPayload = {
-      notification: {
-        title: `${fromAddress} sent ether to ${toAddress}`,
-        body: `${fromAddress} sent ${value} wei to ${toAddress}`,
-        fromAddress,
-        toAddress,
-        value,
-        gas,
-        hash,
-      },
-    };
-    const notification = await Notification.findOne({ userId: user._id });
-    notification.notifications.unshift(notificationPayload.notification);
-    await notification.save();
+  // const address = await Address.findOne({
+  //   address: { $regex: fromAddress, $options: "i" },
+  // });
+  // address.users.forEach(async (userId) => {
+  //   const user = await User.findById(userId);
+  //   const notificationPayload = {
+  //     notification: {
+  //       title: `${fromAddress} sent ether to ${toAddress}`,
+  //       body: `${fromAddress} sent ${value} wei to ${toAddress}`,
+  //       fromAddress,
+  //       toAddress,
+  //       value,
+  //       gas,
+  //       hash,
+  //     },
+  //   };
+  //   const notification = await Notification.findOne({ userId: user._id });
+  //   notification.notifications.unshift(notificationPayload.notification);
+  //   await notification.save();
 
-    await sendEmail({
-      email: user.email,
-      subject: notificationPayload.notification.title,
-      message: notificationPayload.notification.body,
-    });
+  //   await sendEmail({
+  //     email: user.email,
+  //     subject: notificationPayload.notification.title,
+  //     message: notificationPayload.notification.body,
+  //   });
 
     // await webPush.sendNotification(
     //   notification.notificationSubscription,
