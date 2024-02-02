@@ -9,8 +9,7 @@ const moralisStream = async () => {
     tag: "transfers",
     includeContractLogs: false,
     includeNativeTxs: true,
-    webhookUrl:
-      "https://e5eb-2405-201-3043-a888-c592-ed4f-65fe-e2e4.ngrok-free.app/api/address/webhook",
+    webhookUrl: "https://etherexplorer.onrender.com/api/address/webhook",
   };
 
   const newStream = await Moralis.Streams.add(options);

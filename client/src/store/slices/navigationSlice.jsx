@@ -7,7 +7,10 @@ export const getUserNotifications = createAsyncThunk(
   () => {
     const config = { withCredentials: true };
     const fetchData = async () => {
-      const { data } = await axios.get("/api/notify", config);
+      const { data } = await axios.get(
+        "https://etherexplorer.onrender.com/api/notify",
+        config
+      );
       return data;
     };
     return ConvertError(fetchData);

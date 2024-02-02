@@ -6,7 +6,10 @@ export const loadUser = createAsyncThunk("loadUser", async () => {
   const config = {
     withCredentials: true,
   };
-  const { data } = await axios.get("/api/detail/me", config);
+  const { data } = await axios.get(
+    "https://etherexplorer.onrender.com/api/detail/me",
+    config
+  );
   return data;
 });
 
@@ -16,7 +19,11 @@ export const registerUser = createAsyncThunk("registerUser", (options) => {
     withCredentials: true,
   };
   const fetchData = async () => {
-    const { data } = await axios.post("/api/register", options, config);
+    const { data } = await axios.post(
+      "https://etherexplorer.onrender.com/api/register",
+      options,
+      config
+    );
     return data;
   };
   return ConvertError(fetchData);
@@ -28,7 +35,11 @@ export const loginUser = createAsyncThunk("loginUser", (options) => {
     withCredentials: true,
   };
   const fetchData = async () => {
-    const { data } = await axios.post("/api/login", options, config);
+    const { data } = await axios.post(
+      "https://etherexplorer.onrender.com/api/login",
+      options,
+      config
+    );
     return data;
   };
   return ConvertError(fetchData);
@@ -40,7 +51,11 @@ export const updateUser = createAsyncThunk("updateUser", (options) => {
     withCredentials: true,
   };
   const fetchData = async () => {
-    const { data } = await axios.put("/api/update/profile", options, config);
+    const { data } = await axios.put(
+      "https://etherexplorer.onrender.com/api/update/profile",
+      options,
+      config
+    );
     return data;
   };
   return ConvertError(fetchData);
@@ -50,7 +65,10 @@ export const logoutUser = createAsyncThunk("logoutUser", async () => {
   const config = {
     withCredentials: true,
   };
-  const { data } = await axios.get("/api/logout", config);
+  const { data } = await axios.get(
+    "https://etherexplorer.onrender.com/api/logout",
+    config
+  );
   return data;
 });
 
@@ -61,7 +79,11 @@ export const sendServiceWorkerSubscription = createAsyncThunk(
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    const { data } = await axios.put("/api/notify/subscribe", options, config);
+    const { data } = await axios.put(
+      "https://etherexplorer.onrender.com/api/notify/subscribe",
+      options,
+      config
+    );
     return data;
   }
 );

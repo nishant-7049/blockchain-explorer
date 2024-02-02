@@ -4,7 +4,9 @@ import ConvertError from "../ConvertError";
 
 export const getEtherPrice = createAsyncThunk("getEtherPrice", () => {
   const fetchData = async () => {
-    const { data } = await axios.get("/api/ether/getEthPrice");
+    const { data } = await axios.get(
+      "https://etherexplorer.onrender.com/api/ether/getEthPrice"
+    );
     return data;
   };
   return ConvertError(fetchData);
@@ -14,7 +16,9 @@ export const getAccountDetails = createAsyncThunk(
   "getAccountDetails",
   (address) => {
     const fetchData = async () => {
-      const { data } = await axios.get(`/api/ether/address/detail/${address}`);
+      const { data } = await axios.get(
+        `https://etherexplorer.onrender.com/api/ether/address/detail/${address}`
+      );
       return data;
     };
     return ConvertError(fetchData);
@@ -26,7 +30,10 @@ export const getEtherAddress = createAsyncThunk(
   (address) => {
     const config = { withCredentials: true };
     const fetchData = async () => {
-      const { data } = await axios.get(`/api/address/${address}`, config);
+      const { data } = await axios.get(
+        `https://etherexplorer.onrender.com/api/address/${address}`,
+        config
+      );
       return data;
     };
     return ConvertError(fetchData);
@@ -41,7 +48,7 @@ export const setAddressAlert = createAsyncThunk(
     };
     const fetchData = async () => {
       const { data } = await axios.put(
-        `/api/address/setAddressAlert/${address}`,
+        `https://etherexplorer.onrender.com/api/address/setAddressAlert/${address}`,
         {},
         config
       );
@@ -58,7 +65,10 @@ export const getAlertedAddressDetails = createAsyncThunk(
       withCredentials: true,
     };
     const fetchData = async () => {
-      const { data } = await axios.get("/api/ether/address/detail", config);
+      const { data } = await axios.get(
+        "https://etherexplorer.onrender.com/api/ether/address/detail",
+        config
+      );
       return data;
     };
     return ConvertError(fetchData);
