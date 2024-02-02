@@ -18,7 +18,7 @@ import NotificationPage from "./components/NotificationPage.jsx";
 
 function App() {
   const dispatch = useDispatch();
-  const { isAuthenticated, error } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(loadUser());
   }, []);
@@ -27,40 +27,7 @@ function App() {
       dispatch(clearError());
     }
   }, [error]);
-  useEffect(() => {
-    if (isAuthenticated) {
-      if ("serviceWorker" in navigator && "PushManager" in self) {
-        navigator.serviceWorker
-          .register("/service-worker.js")
-          .then((registration) => {
-            console.log(
-              "Service Worker registered with scope:",
-              registration.scope
-            );
-            return registration.pushManager.getSubscription();
-          })
-          .then((subscription) => {
-            if (subscription === null) {
-              return self.registration.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: "your-public-key",
-              });
-            } else {
-              console.log("User is already subscribed");
-              return subscription;
-            }
-          })
-          .then((subscription) => {
-            dispatch(sendServiceWorkerSubscription({ subscription }));
-          })
-          .catch((error) => {
-            console.error("Error registering service worker:", error);
-          });
-      } else {
-        console.log("Service workers or PushManager not supported");
-      }
-    }
-  }, [isAuthenticated]);
+
   return (
     <>
       <Navbar />
