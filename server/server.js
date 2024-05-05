@@ -68,6 +68,6 @@ const startServer = async () => {
 
 const startMoralisStream = async () => {
   await startServer();
-  moralisStream();
+  //moralisStream();
 };
 startMoralisStream();
